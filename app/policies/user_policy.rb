@@ -3,7 +3,7 @@ class UserPolicy < ApplicationPolicy
 
  class Scope < Scope
   def resolve
-    scope.where(id: @user.try(:id)))
+    scope.where(id: @user.try(:id))
   end
  end
 
@@ -29,7 +29,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || user.modertor? || record.try(:user) == user
+    record.try(:id) == @user.id
   end
 
   def edit?
