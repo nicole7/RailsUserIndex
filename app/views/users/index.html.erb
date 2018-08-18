@@ -1,5 +1,14 @@
 <p id="notice"><%= notice %></p>
 <h1>Hi, <%=current_user.first_name%></h1>
+<p>
+  Your email: <%=current_user.email%>
+</br>
+<%if current_user.fav_color != nil%>
+  Your favorite color: <%=current_user.fav_color%>
+  </br>
+<%else%>
+  </br>
+<%end%>
 
 <h3>Here are a list of all other users using this site:</h3>
 <div>
