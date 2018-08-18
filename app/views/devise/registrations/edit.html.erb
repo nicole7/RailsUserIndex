@@ -22,6 +22,15 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :favorite_color %><br />
+    <%= f.text_field :fav_color, autofocus: true, autocomplete: "fav_color" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_fav_color %></div>
+  <% end %>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
