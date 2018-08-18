@@ -3,24 +3,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = current_user
+    @users = User.all
+    render :index
+  end
+
   def edit
     @user = current_user
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  authorize @user
+    authorize @user
     if @user.update_attributes(account_update_params)
       redirect_to @user
     else
