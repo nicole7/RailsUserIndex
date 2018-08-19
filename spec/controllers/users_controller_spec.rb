@@ -1,17 +1,17 @@
-# require_relative '../spec_helper'
+
 require 'rails_helper'
-require 'spec_helper'
+
 # require './app/controllers/application_controller.rb'
 # require './app/controllers/users_controller.rb'
 
 
-RSpec.describe UsersController, :type => :controller do
-  # include Authlogic::TestCase
-  # before do
-  #   user = FactoryBot.create(:user)
-  #   allow(controller).to receive(:authenticate_user!).and_return(true)
-  #   allow(controller).to receive(:current_user).and_return(user)
-  # end
+RSpec.describe Rspec::UsersController, :type => :controller do
+  include Authlogic::TestCase
+  before do
+    user = FactoryBot.create(:user)
+    allow(controller).to receive(:authenticate_user!).and_return(true)
+    allow(controller).to receive(:current_user).and_return(user)
+  end
 
   # before(:each) do
   #   activate_authlogic
