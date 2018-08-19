@@ -1,5 +1,4 @@
 class RegistrationPolicy < ApplicationPolicy
 
-
 end
 
