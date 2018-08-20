@@ -2,7 +2,7 @@ class UserPolicy < ApplicationPolicy
   def index?
     true
   end
-  def new
+  def new?
     true
   end
   def create?
