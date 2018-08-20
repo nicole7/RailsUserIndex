@@ -1,15 +1,12 @@
 require_relative 'rails_helper'
 require_relative 'spec_helper'
 
-# require './app/controllers/application_controller.rb'
-# require './app/controllers/users_controller.rb'
-
-
 RSpec.describe UsersController, :type => :controller do
 
   describe "logs user in to the right page after logging in" do
      let(:valid_user) { User.create(first_name: "Nicole", last_name: "Gasperini", fav_color: "Yellow", email: "gasperini@gmail.com", password: "123456") }
     let (:other_users) { FactoryBot.create_list(:user, 10)}
+
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:valid_user]
       sign_in valid_user
