@@ -1,39 +1,34 @@
 require_relative 'rails_helper'
 require_relative 'spec_helper'
+
 # require './app/controllers/application_controller.rb'
 # require './app/controllers/users_controller.rb'
 
 
 RSpec.describe UsersController, :type => :controller do
 
-  before do
-    user = FactoryBot.create(:user)
-    allow(controller).to receive(:authenticate_user!).and_return(true)
-    allow(controller).to receive(:current_user).and_return(user)
-  end
+  describe "logs user in to the right page after logging in" do
+     let(:valid_user) { User.create(first_name: "Nicole", last_name: "Gasperini", fav_color: "Yellow", email: "gasperini@gmail.com", password: "123456") }
+    let (:other_users) { FactoryBot.create_list(:user, 10)}
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:valid_user]
+      sign_in valid_user
+    end
 
-    # @user = User.create(first_name: "Nate", last_name: "Shoop", fav_color: "Blue", email: "shoop@gmail.com", password: "123456")
+    it "should have a current_user" do
+      expect(subject.current_user).to_not eq(nil)
+    end
 
-   describe "PUT #update" do
-    it "validates new attributes" do
-      # it "assigns new attributes from user input" do
-        # put :update, id: @user, user: Factory.attributes_for(:user)
-        assigns(:user).should eq(@user)
-      end
-      # it "saves new user information to user attributes" do
-      #   put :update, id: @user, user: Factory.attributes_for(:user, first_name: "Nicole", last_name: "Gasperini", fav_color: "Yellow", email: "gasperini@gmail.com")
-      #   @user.reload
-      #   @user.first_name.to_eq("Nicole")
-      #   @user.last_name.to_eq("Gasperini")
-      #   @user.fav_color.to_eq("Yellow")
-      #   @user.email.to_eq("gasperini@gmail.com")
-      # end
-      # it "rendirects to root page" do
-      #   put :update, id: @user, user: Factory.attributes_for(:user)
-      #   response.should redirect_to @user
-      # end
+    it "should have index" do
+      get 'index'
+      response.should be_success
+    end
 
-    # end
+     it "populates a list of users" do
 
-  end
+      get :index
+      expect(other_users).to be_an_instance_of(Array)
+    end
+ end
+
 end

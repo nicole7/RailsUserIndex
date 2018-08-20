@@ -4,7 +4,6 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     fav_color { Faker::Color.color_name }
     email { Faker::Internet.email }
-    password "password"
-    password_confirmation "password"
+    password "123456"
   end
 end

@@ -10,6 +10,7 @@ end
 gem 'bootstrap'
 gem 'devise'
 gem 'faker'
+# gem 'factory_bot'
 gem 'jquery-rails'
 gem 'rails', '~> 5.1.6'
 gem 'rails-controller-testing'
