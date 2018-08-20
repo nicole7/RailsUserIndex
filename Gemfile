@@ -9,8 +9,11 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bootstrap'
 gem 'devise'
+gem 'faker'
+# gem 'factory_bot'
 gem 'jquery-rails'
 gem 'rails', '~> 5.1.6'
+gem 'rails-controller-testing'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -40,6 +43,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'pundit-matchers', '~> 1.6.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
